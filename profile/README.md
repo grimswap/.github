@@ -100,7 +100,7 @@ TypeScript SDK for privacy primitives
 <td width="50%">
 
 ### 🌐 [grimswap-app](https://github.com/grimswap/grimswap-app)
-Next.js frontend application
+Vite + React frontend application
 - Privacy-enabled swap interface
 - Ring size selector (2-10 addresses)
 - Portfolio scanner for stealth payments
@@ -172,7 +172,7 @@ Integration tests & examples
 | **Cryptography** | LSAG Ring Signatures, ERC-5564 |
 | **Smart Contracts** | Solidity 0.8.26, Foundry |
 | **SDK** | TypeScript, viem, @noble/secp256k1 |
-| **Frontend** | Next.js 14, wagmi, RainbowKit |
+| **Frontend** | Vite, React, wagmi, RainbowKit |
 
 </div>
 
