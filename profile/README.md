@@ -6,8 +6,9 @@
 
 **Privacy-Preserving Swaps on Uniswap v4**
 
-[![ZK Verified](https://img.shields.io/badge/ZK%20Proof-Verified%20On--Chain-00D632?style=for-the-badge)](https://unichain-sepolia.blockscout.com/tx/0xdc0532d5454ac670f08fc5b45cf55c136d755c7a4f478fe3c93024184a9871c1)
-[![Live on Unichain](https://img.shields.io/badge/Live%20on-Unichain-7B3FE4?style=for-the-badge)](https://unichain-sepolia.blockscout.com/address/0x95ED348fCC232FB040e46c77C60308517e4BC0C4)
+[![npm](https://img.shields.io/npm/v/@grimswap/circuits?style=for-the-badge&label=SDK&color=CB3837)](https://www.npmjs.com/package/@grimswap/circuits)
+[![ZK Verified](https://img.shields.io/badge/ZK%20Proof-Verified%20On--Chain-00D632?style=for-the-badge)](https://unichain-sepolia.blockscout.com/tx/0xca2fa2b55af5a94f9d1ea3712aa08c847154a4327172172a4f1bfa861d0e4461)
+[![Live on Unichain](https://img.shields.io/badge/Live%20on-Unichain-7B3FE4?style=for-the-badge)](https://unichain-sepolia.blockscout.com/address/0xeB72E2495640a4B83EBfc4618FD91cc9beB640c4)
 [![MIT License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
 </div>
@@ -58,7 +59,7 @@ GrimSwap is the **first privacy-preserving DEX built on Uniswap v4**, combining 
 
 | Metric | Value |
 |--------|-------|
-| **TX Hash** | [`0xdc0532d...`](https://unichain-sepolia.blockscout.com/tx/0xdc0532d5454ac670f08fc5b45cf55c136d755c7a4f478fe3c93024184a9871c1) |
+| **TX Hash** | [`0xca2fa2b5...`](https://unichain-sepolia.blockscout.com/tx/0xca2fa2b55af5a94f9d1ea3712aa08c847154a4327172172a4f1bfa861d0e4461) |
 | **Network** | Unichain Sepolia |
 | **Gas Used** | 828,010 |
 | **ZK Proof Time** | ~1 second |
@@ -116,11 +117,11 @@ Solidity smart contracts for Uniswap v4 hooks
 <td width="50%">
 
 ### 🔐 [grimswap-circuits](https://github.com/grimswap/grimswap-circuits)
-Circom ZK circuits and SDK
-- `privateSwap.circom` - Main privacy circuit
-- Poseidon hash commitments
-- Merkle tree proof generation
-- TypeScript proof SDK
+Circom ZK circuits + [`@grimswap/circuits`](https://www.npmjs.com/package/@grimswap/circuits) SDK
+- `privateSwap.circom` — Main privacy circuit
+- `npm install @grimswap/circuits` — Partner SDK
+- Browser-compatible ZK proof generation
+- One-call `executePrivateSwap()` integration
 
 </td>
 </tr>
@@ -150,10 +151,10 @@ Integration tests & examples
 <td width="50%">
 
 ### 🔄 [grimswap-relayer](https://github.com/grimswap/grimswap-relayer)
-Transaction relay service
-- Gas payer privacy
-- Proof submission
-- Fee management
+Transaction relay service — [live](https://services.grimswap.com/health)
+- Gas payer privacy (hides tx origin)
+- ZK proof submission + on-chain execution
+- V3 Router flow with `executePrivateSwap`
 
 </td>
 <td width="50%">
@@ -237,12 +238,13 @@ TypeScript SDK for privacy primitives
 
 ## Deployed Contracts (Unichain Sepolia)
 
-### ZK Contracts (Primary)
+### ZK Contracts (V3 — Current)
 
 | Contract | Address |
 |----------|---------|
-| **GrimSwapZK Hook** | [`0x95ED348fCC232FB040e46c77C60308517e4BC0C4`](https://unichain-sepolia.blockscout.com/address/0x95ED348fCC232FB040e46c77C60308517e4BC0C4) |
-| **GrimPool** | [`0xad079eAC28499c4eeA5C02D2DE1C81E56b9AA090`](https://unichain-sepolia.blockscout.com/address/0xad079eAC28499c4eeA5C02D2DE1C81E56b9AA090) |
+| **GrimSwapZK Hook** | [`0xeB72E2495640a4B83EBfc4618FD91cc9beB640c4`](https://unichain-sepolia.blockscout.com/address/0xeB72E2495640a4B83EBfc4618FD91cc9beB640c4) |
+| **GrimPool** | [`0xEAB5E7B4e715A22E8c114B7476eeC15770B582bb`](https://unichain-sepolia.blockscout.com/address/0xEAB5E7B4e715A22E8c114B7476eeC15770B582bb) |
+| **GrimSwapRouter** | [`0xC13a6a504da21aD23c748f08d3E991621D42DA4F`](https://unichain-sepolia.blockscout.com/address/0xC13a6a504da21aD23c748f08d3E991621D42DA4F) |
 | **Groth16Verifier** | [`0xF7D14b744935cE34a210D7513471a8E6d6e696a0`](https://unichain-sepolia.blockscout.com/address/0xF7D14b744935cE34a210D7513471a8E6d6e696a0) |
 
 ### Supporting Contracts
@@ -251,6 +253,13 @@ TypeScript SDK for privacy primitives
 |----------|---------|
 | StealthAddressRegistry | [`0xA9e4ED4183b3B3cC364cF82dA7982D5ABE956307`](https://unichain-sepolia.blockscout.com/address/0xA9e4ED4183b3B3cC364cF82dA7982D5ABE956307) |
 | ERC5564Announcer | [`0x42013A72753F6EC28e27582D4cDb8425b44fd311`](https://unichain-sepolia.blockscout.com/address/0x42013A72753F6EC28e27582D4cDb8425b44fd311) |
+
+### Services
+
+| Service | URL |
+|---------|-----|
+| **Relayer** | [`https://services.grimswap.com`](https://services.grimswap.com/health) |
+| **SDK** | [`@grimswap/circuits`](https://www.npmjs.com/package/@grimswap/circuits) |
 
 ---
 
@@ -290,11 +299,79 @@ npm run test:zkswap
 
 ---
 
+## Partner Integration
+
+Integrate private swaps into your app with the [`@grimswap/circuits`](https://www.npmjs.com/package/@grimswap/circuits) SDK.
+
+### Install
+
+```bash
+npm install @grimswap/circuits
+npx grimswap-copy-circuits public/circuits
+```
+
+### Deposit + Private Swap
+
+```typescript
+import {
+  createDepositNote,
+  formatCommitmentForContract,
+  executePrivateSwap,
+  GRIM_POOL_ABI,
+  UNICHAIN_SEPOLIA_ADDRESSES,
+} from "@grimswap/circuits";
+
+// 1. Deposit ETH
+const note = await createDepositNote(parseEther("1"));
+await contract.deposit(formatCommitmentForContract(note.commitment), { value: parseEther("1") });
+note.leafIndex = /* from Deposit event */;
+
+// 2. Private swap (one call — builds tree, generates proof, submits to relayer)
+const wasm = await fetch("/circuits/privateSwap.wasm").then(r => r.arrayBuffer());
+const zkey = await fetch("/circuits/privateSwap.zkey").then(r => r.arrayBuffer());
+
+const result = await executePrivateSwap({
+  note,
+  recipient: stealthAddress,
+  poolKey: {
+    currency0: "0x0000000000000000000000000000000000000000",
+    currency1: tokenAddress,
+    fee: 3000,
+    tickSpacing: 60,
+    hooks: UNICHAIN_SEPOLIA_ADDRESSES.grimSwapZK,
+  },
+  zeroForOne: true,
+  amountSpecified: -note.amount,
+  wasmBuffer: wasm,
+  zkeyBuffer: zkey,
+});
+
+console.log(result.txHash); // done!
+```
+
+### What the SDK provides
+
+| Feature | Function |
+|---------|----------|
+| Create deposits | `createDepositNote()`, `formatCommitmentForContract()` |
+| Read chain state | `fetchDeposits()`, `getDepositCount()` |
+| ZK proof (browser) | `generateProofFromBuffers()` |
+| Full private swap | `executePrivateSwap()` — single call |
+| Relayer client | `submitToRelayer()`, `getRelayerInfo()` |
+| Stealth addresses | `generateStealthKeys()`, `generateStealthAddress()` |
+| All ABIs | `GRIM_POOL_ABI`, `GRIM_SWAP_ROUTER_ABI`, etc. |
+| All addresses | `UNICHAIN_SEPOLIA_ADDRESSES` |
+
+**Full integration guide:** [`grimswap-circuits/README.md`](https://github.com/grimswap/grimswap-circuits#readme)
+
+---
+
 ## Connect With Us
 
 <div align="center">
 
 [![App](https://img.shields.io/badge/App-grimswap.vercel.app-7B3FE4?style=for-the-badge)](https://grimswap.vercel.app)
+[![npm](https://img.shields.io/badge/SDK-@grimswap/circuits-CB3837?style=for-the-badge&logo=npm)](https://www.npmjs.com/package/@grimswap/circuits)
 [![GitHub](https://img.shields.io/badge/GitHub-grimswap-181717?style=for-the-badge&logo=github)](https://github.com/grimswap)
 
 **Built with dark magic by [Faisal](https://github.com/pfrfrfa) (ETHJKT)**
