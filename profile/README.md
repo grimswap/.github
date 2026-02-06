@@ -8,7 +8,7 @@
 
 [![npm](https://img.shields.io/npm/v/@grimswap/circuits?style=for-the-badge&label=SDK&color=CB3837)](https://www.npmjs.com/package/@grimswap/circuits)
 [![ZK Verified](https://img.shields.io/badge/ZK%20Proof-Verified%20On--Chain-00D632?style=for-the-badge)](https://unichain-sepolia.blockscout.com/tx/0xca2fa2b55af5a94f9d1ea3712aa08c847154a4327172172a4f1bfa861d0e4461)
-[![Live on Unichain](https://img.shields.io/badge/Live%20on-Unichain-7B3FE4?style=for-the-badge)](https://unichain-sepolia.blockscout.com/address/0xeB72E2495640a4B83EBfc4618FD91cc9beB640c4)
+[![Live on Unichain](https://img.shields.io/badge/Live%20on-Unichain-7B3FE4?style=for-the-badge)](https://unichain-sepolia.blockscout.com/address/0x3bee7D1A5914d1ccD34D2a2d00C359D0746400C4)
 [![MIT License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
 </div>
@@ -242,7 +242,7 @@ TypeScript SDK for privacy primitives
 
 | Contract | Address |
 |----------|---------|
-| **GrimSwapZK Hook** | [`0xeB72E2495640a4B83EBfc4618FD91cc9beB640c4`](https://unichain-sepolia.blockscout.com/address/0xeB72E2495640a4B83EBfc4618FD91cc9beB640c4) |
+| **GrimSwapZK Hook** | [`0x3bee7D1A5914d1ccD34D2a2d00C359D0746400C4`](https://unichain-sepolia.blockscout.com/address/0x3bee7D1A5914d1ccD34D2a2d00C359D0746400C4) |
 | **GrimPool** | [`0xEAB5E7B4e715A22E8c114B7476eeC15770B582bb`](https://unichain-sepolia.blockscout.com/address/0xEAB5E7B4e715A22E8c114B7476eeC15770B582bb) |
 | **GrimSwapRouter** | [`0xC13a6a504da21aD23c748f08d3E991621D42DA4F`](https://unichain-sepolia.blockscout.com/address/0xC13a6a504da21aD23c748f08d3E991621D42DA4F) |
 | **Groth16Verifier** | [`0xF7D14b744935cE34a210D7513471a8E6d6e696a0`](https://unichain-sepolia.blockscout.com/address/0xF7D14b744935cE34a210D7513471a8E6d6e696a0) |
