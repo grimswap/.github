@@ -2,7 +2,10 @@
 
 <div align="center">
 
-![GrimSwap Banner](https://github.com/user-attachments/assets/grimswap-banner.png)
+
+
+<img width="800" height="400" alt="Frame (2)" src="https://github.com/user-attachments/assets/b37b1093-628c-4178-bab1-fb2bc8ab48a5" />
+
 
 **Privacy-Preserving Swaps on Uniswap v4**
 
