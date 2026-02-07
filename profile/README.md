@@ -55,13 +55,16 @@ GrimSwap is the **first privacy-preserving DEX built on Uniswap v4**, combining 
 
 <div align="center">
 
-### Full ZK Private Swap - SUCCESS
+### V3 Multi-Token Private Swaps - SUCCESS
+
+| Direction | Input | Output | TX Hash |
+|-----------|-------|--------|---------|
+| **ETH → USDC** | 0.001 ETH | 224.36 USDC | [`0x22b313f8...`](https://unichain-sepolia.blockscout.com/tx/0x22b313f89d9a706e79e34dfcaa24c411fcd10335af46995ed6677c85562b65be) |
+| **USDC → ETH** | 1 USDC | ~0.0005 ETH | [`0xbf064fbc...`](https://unichain-sepolia.blockscout.com/tx/0xbf064fbc7344be22b3ad1bb52181fb0223602c334b74236eb70b9215d20e5120) |
 
 | Metric | Value |
 |--------|-------|
-| **TX Hash** | [`0xca2fa2b5...`](https://unichain-sepolia.blockscout.com/tx/0xca2fa2b55af5a94f9d1ea3712aa08c847154a4327172172a4f1bfa861d0e4461) |
 | **Network** | Unichain Sepolia |
-| **Gas Used** | 828,010 |
 | **ZK Proof Time** | ~1 second |
 | **Status** | **ON-CHAIN VERIFIED** |
 
@@ -218,6 +221,53 @@ TypeScript SDK for privacy primitives
 
 ---
 
+## Privacy Model: Anonymity Set
+
+GrimSwap provides **unlinkability**, not invisibility. This is the same model used by Tornado Cash, Railgun, and other proven privacy protocols.
+
+### What's Visible vs Hidden
+
+| Step | What's Visible On-Chain | What's Hidden |
+|------|-------------------------|---------------|
+| **Deposit** | User address, amount, commitment hash | — |
+| **ZK Proof Generation** | Nothing (runs client-side) | Everything |
+| **Swap Execution** | Relayer address, swap output | Which deposit was used |
+| **Token Receipt** | Stealth address receives tokens | Link to original depositor |
+
+### How It Works
+
+```
+Alice deposits 0.01 ETH  ──┐
+Bob deposits 0.01 ETH    ──┼──► GrimPool (Anonymity Set)
+Carol deposits 0.01 ETH  ──┘
+                              │
+                              ▼ ZK Proof proves membership
+                              │   without revealing which one
+                              ▼
+Swap Output ──────────────► Stealth Address (unlinkable)
+```
+
+**What an observer sees:**
+- "Alice, Bob, and Carol each deposited to GrimPool"
+- "Someone withdrew and swapped to a stealth address"
+
+**What an observer CANNOT prove:**
+- Which specific deposit was used
+- Any link between depositor ↔ stealth address recipient
+
+### Privacy Strength
+
+| Deposits in Pool | Privacy Level |
+|------------------|---------------|
+| 1 deposit | No privacy (trivial to link) |
+| 10 deposits | Weak privacy |
+| 100 deposits | Good privacy |
+| 1,000+ deposits | **Strong privacy** |
+
+> **The deposit being visible is expected.** The ZK proof ensures no one can link it to the output.
+
+---
+
 ## Technology Stack
 
 <div align="center">
@@ -238,14 +288,15 @@ TypeScript SDK for privacy primitives
 
 ## Deployed Contracts (Unichain Sepolia)
 
-### ZK Contracts (V3 — Current)
+### ZK Contracts (V3 — Multi-Token)
 
 | Contract | Address |
 |----------|---------|
-| **GrimSwapZK Hook** | [`0x3bee7D1A5914d1ccD34D2a2d00C359D0746400C4`](https://unichain-sepolia.blockscout.com/address/0x3bee7D1A5914d1ccD34D2a2d00C359D0746400C4) |
-| **GrimPool** | [`0xEAB5E7B4e715A22E8c114B7476eeC15770B582bb`](https://unichain-sepolia.blockscout.com/address/0xEAB5E7B4e715A22E8c114B7476eeC15770B582bb) |
-| **GrimSwapRouter** | [`0xC13a6a504da21aD23c748f08d3E991621D42DA4F`](https://unichain-sepolia.blockscout.com/address/0xC13a6a504da21aD23c748f08d3E991621D42DA4F) |
+| **GrimSwapZK Hook** | [`0x6AFe3f3B81d6a22948800C924b2e9031e76E00C4`](https://unichain-sepolia.blockscout.com/address/0x6AFe3f3B81d6a22948800C924b2e9031e76E00C4) |
+| **GrimPoolMultiToken** | [`0x6777cfe2A72669dA5a8087181e42CA3dB29e7710`](https://unichain-sepolia.blockscout.com/address/0x6777cfe2A72669dA5a8087181e42CA3dB29e7710) |
+| **GrimSwapRouterV2** | [`0x5EE78E89A0d5B4669b05aC8B7D7ea054a08f555f`](https://unichain-sepolia.blockscout.com/address/0x5EE78E89A0d5B4669b05aC8B7D7ea054a08f555f) |
 | **Groth16Verifier** | [`0xF7D14b744935cE34a210D7513471a8E6d6e696a0`](https://unichain-sepolia.blockscout.com/address/0xF7D14b744935cE34a210D7513471a8E6d6e696a0) |
+| **USDC** | [`0x31d0220469e10c4E71834a79b1f276d740d3768F`](https://unichain-sepolia.blockscout.com/address/0x31d0220469e10c4E71834a79b1f276d740d3768F) |
 
 ### Supporting Contracts
 
